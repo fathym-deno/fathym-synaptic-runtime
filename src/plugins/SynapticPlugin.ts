@@ -1,9 +1,6 @@
-import {
-  EaCRuntimeConfig,
-  EaCRuntimeEaC,
-  EaCRuntimePlugin,
-  EaCRuntimePluginConfig,
-} from '@fathym/eac-runtime';
+import { EaCRuntimePlugin, EaCRuntimePluginConfig } from '@fathym/eac/runtime/plugins';
+import { EaCRuntimeConfig } from '@fathym/eac/runtime/config';
+import { EverythingAsCode } from '@fathym/eac';
 import {
   EaCAzureOpenAIEmbeddingsDetails,
   EaCAzureOpenAILLMDetails,
@@ -19,7 +16,7 @@ export default class SynapticPlugin implements EaCRuntimePlugin {
   constructor() {}
 
   public Setup(_config: EaCRuntimeConfig) {
-    const pluginConfig: EaCRuntimePluginConfig = {
+    const pluginConfig: EaCRuntimePluginConfig<EverythingAsCode & EverythingAsCodeSynaptic> = {
       Name: SynapticPlugin.name,
       Plugins: [],
       EaC: {
@@ -55,10 +52,10 @@ export default class SynapticPlugin implements EaCRuntimePlugin {
             },
             Personalities: {
               [`Employee`]: {
-                PersonalityLookups: ['aaa_bbb_ccc'],
+                PersonalityLookups: ['fathym'],
                 Details: {
                   SystemMessages: [
-                    `You are the most knowledgable aaa_bbb_ccc employee, not because you already know it all and how to relate your real-world experience to your aaa_bbb_ccc knowledge, but also because you are willing to take the time to refresh your knowledge on aaa_bbb_ccc and relate it not to just your real-world experience, but also the context of the user's questions. `,
+                    `You are the most knowledgable fathym employee, not because you already know it all and how to relate your real-world experience to your fathym knowledge, but also because you are willing to take the time to refresh your knowledge on fathym and relate it not to just your real-world experience, but also the context of the user's questions. `,
                   ],
                 },
               },
@@ -88,7 +85,7 @@ export default class SynapticPlugin implements EaCRuntimePlugin {
                   Messages: [new MessagesPlaceholder('Messages')],
                 },
               },
-              ['aaa_bbb_ccc']: {
+              ['fathym']: {
                 Details: {
                   SystemMessages: [
                     `You are Thinky, the user's company assistant. `,
@@ -132,7 +129,7 @@ export default class SynapticPlugin implements EaCRuntimePlugin {
             ],
           },
         },
-      } as EaCRuntimeEaC | EverythingAsCodeSynaptic,
+      },
     };
 
     return Promise.resolve(pluginConfig);
