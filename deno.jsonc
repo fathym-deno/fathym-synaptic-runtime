@@ -28,7 +28,7 @@
   "imports": {
     "@fathym/common": "jsr:@fathym/common@0.2.179",
     "@fathym/eac": "jsr:@fathym/eac@0.2.90",
-    "@fathym/eac-applications": "jsr:@fathym/eac-applications@0.0.84",
+    "@fathym/eac-applications": "jsr:@fathym/eac-applications@0.0.91-analytics",
     "@fathym/eac-deno-kv": "jsr:@fathym/eac-deno-kv@0.0.11",
     "@fathym/ioc": "jsr:@fathym/ioc@0.0.14",
     "@fathym/synaptic": "jsr:@fathym/synaptic@0.0.207",
